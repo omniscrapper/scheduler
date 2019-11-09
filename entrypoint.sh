@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /app
+sleep 10
 foreman start
