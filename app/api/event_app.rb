@@ -1,10 +1,15 @@
 require_relative 'base'
 require_relative '../../lib/models/event'
+require_relative '../../lib/api/schema'
 
 module Api
   class EventApp < Api::Base
-    get '/events' do
-      Event.all.first.name
+    post '/events' do
+      result = ApiSchema.execute(
+        params[:query],
+        variables: params[:variables]
+      )
+      json result
     end
   end
 end
