@@ -3,7 +3,7 @@ require_relative '../lib/api/schema'
 
 module Api
   class App < Sinatra::Base
-    post '/' do
+    post '/graphql' do
       result = ApiSchema.execute(
         params[:query],
         variables: params[:variables]
