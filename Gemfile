@@ -9,6 +9,7 @@ gem 'sinatra-activerecord'
 gem 'puma'
 gem 'sinatra-contrib'
 gem 'rake'
+gem 'rack-contrib'
 
 group :development do
   gem 'pry'
