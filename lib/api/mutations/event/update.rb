@@ -5,19 +5,20 @@ require_relative '../../types/event_attributes'
 
 module Mutations
   module Event
-    class Create < Mutations::Base
+    class Update < Mutations::Base
+      argument :id, ID, required: true
       argument :attributes, Types::EventAttributes, required: true
 
       field :event, Types::Event, null: true
       field :errors, [String], null: true
 
-      def resolve(attributes:)
-        event = ::Event.new(attributes.to_h)
+      def resolve(id:, attributes:)
+        event = ::Event.find(id)
 
-        if event.save
+        if event.update(attributes.to_h)
           { event: event }
         else
-          { errors: event.errors.full_messages }
+         { errors: event.errros.full_messages }
         end
       end
     end
