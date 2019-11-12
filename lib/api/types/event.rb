@@ -1,7 +1,7 @@
-require_relative 'base_object'
+require_relative 'base'
 
 module Types
-  class Event < Types::BaseObject
+  class Event < Types::Base
     field :id, ID, null: false
     field :task_id, Integer, null: false
     field :name, String, null: false
