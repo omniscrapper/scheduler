@@ -1,8 +1,8 @@
 require_relative 'base_object'
-require_relative '../mutations/create_event'
+require_relative '../mutations/event/create'
 
 module Types
   class Mutation < Types::BaseObject
-    field :createEvent, mutation: Mutations::CreateEvent
+    field :createEvent, mutation: Mutations::Event::Create
   end
 end
