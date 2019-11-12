@@ -7,7 +7,7 @@ module Resolvers
     type [Types::Event], null: false
 
     def resolve
-      Event.all
+      ::Event.all
     end
   end
 end
