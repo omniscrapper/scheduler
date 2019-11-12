@@ -1,21 +1,22 @@
 require 'clockwork'
+require 'clockwork/database_events'
 require 'active_support/time'
+require 'active_record'
 require 'sidekiq'
 require './lib/schedule/resolver'
 require './lib/workers/scrapping'
+require './lib/models/event'
 
 Sidekiq.configure_client do |config|
   config.redis = { url: ENV.fetch('REDIS_URL') }
 end
 
+ActiveRecord::Base.establish_connection ENV.fetch('DATABASE_URL')
+
 module Clockwork
-  handler do |job, time|
-    task_ids = Schedule::Resolver.new(time).call
+  Clockwork.manager = DatabaseEvents::Manager.new
 
-    task_ids.each do |task_id|
-      Workers::Scrapping.perform_async(task_id)
-    end
+  sync_database_events model: ::Event, every: 10.minutes do |event|
+    Workers::Scrapping.perform_async(event.task_id)
   end
-
-  every(3.hours, 'scrapping.start')
 end
