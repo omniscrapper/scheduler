@@ -4,6 +4,8 @@ require_relative '../../../models/event'
 module Mutations
   module Event
     class Destroy < Mutations::Base
+      description "Process of destroying event"
+
       argument :id, ID, required: true
 
       field :success, Boolean, null: false

@@ -6,6 +6,8 @@ require_relative '../../types/event_attributes'
 module Mutations
   module Event
     class Create < Mutations::Base
+      description "Process of creating event"
+
       argument :attributes, Types::EventAttributes, required: true
 
       field :event, Types::Event, null: true

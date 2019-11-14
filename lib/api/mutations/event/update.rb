@@ -6,6 +6,8 @@ require_relative '../../types/event_attributes'
 module Mutations
   module Event
     class Update < Mutations::Base
+      description "Process of updating event"
+
       argument :id, ID, required: true
       argument :attributes, Types::EventAttributes, required: true
 
