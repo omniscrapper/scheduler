@@ -1,4 +1,3 @@
-require_relative 'api/event_app'
 require_relative '../lib/api/schema'
 
 module Api
@@ -10,7 +9,5 @@ module Api
       )
       json result
     end
-
-    use Api::EventApp
   end
 end
