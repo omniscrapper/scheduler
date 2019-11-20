@@ -11,4 +11,6 @@ RUN bundle install
 
 COPY . /app/
 
+EXPOSE 2301
+
 ENTRYPOINT ["/app/entrypoint.sh"]

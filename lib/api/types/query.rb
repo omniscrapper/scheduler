@@ -1,14 +1,10 @@
-require_relative 'base_object'
-require_relative 'event'
+require_relative 'base'
+require_relative '../resolvers/schedule/all'
+require_relative '../resolvers/schedule/show'
 
 module Types
-  class Query < Types::BaseObject
-    field :events, [Types::Event], null: false do
-      description 'Get all events'
-    end
-
-    def events
-      Event.all
-    end
+  class Query < Types::Base
+    field :schedules, resolver: Resolvers::Schedule::All
+    field :schedule, resolver: Resolvers::Schedule::Show
   end
 end

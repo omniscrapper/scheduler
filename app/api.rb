@@ -1,7 +1,18 @@
-require_relative 'api/event_app'
+require 'sinatra'
+require 'active_support/time'
+require './sequel'
+require 'sinatra/json'
+require 'rack/contrib'
+require_relative '../lib/api/schema'
 
-module Api
-  class App < Sinatra::Base
-    use Api::EventApp
+class Api < Sinatra::Base
+  use Rack::PostBodyContentTypeParser
+
+  post '/graphql' do
+    result = ApiSchema.execute(
+      params[:query],
+      variables: params[:variables]
+    )
+    json result
   end
 end
