@@ -1,10 +1,10 @@
 require_relative 'base'
-require_relative '../resolvers/event/all'
-require_relative '../resolvers/event/show'
+require_relative '../resolvers/schedule/all'
+require_relative '../resolvers/schedule/show'
 
 module Types
   class Query < Types::Base
-    field :events, resolver: Resolvers::Event::All
-    field :event, resolver: Resolvers::Event::Show
+    field :schedules, resolver: Resolvers::Schedule::All
+    field :schedule, resolver: Resolvers::Schedule::Show
   end
 end

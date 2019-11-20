@@ -1,6 +1,6 @@
 Sequel.migration do
   change do
-    create_table(:events) do
+    create_table(:schedules) do
       primary_key :id
       String :name, null: false
       Integer :task_id, null: false

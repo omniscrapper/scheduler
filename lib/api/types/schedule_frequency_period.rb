@@ -1,9 +1,9 @@
 require_relative 'base_enum'
-require_relative '../../models/event'
+require_relative '../../models/schedule'
 
 module Types
-  class EventFrequencyPeriod < Types::BaseEnum
-    periods = ::Event::FREQUENCY_PERIODS
+  class ScheduleFrequencyPeriod < Types::BaseEnum
+    periods = ::Schedule::FREQUENCY_PERIODS
 
     description "Enum periods: #{periods}"
 

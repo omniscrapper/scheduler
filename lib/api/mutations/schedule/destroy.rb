@@ -1,10 +1,10 @@
 require_relative '../base'
-require_relative '../../../models/event'
+require_relative '../../../models/schedule'
 
 module Mutations
-  module Event
+  module Schedule
     class Destroy < Mutations::Base
-      description "Process of destroying event"
+      description "Process of destroying schedule"
 
       argument :id, ID, required: true
 
@@ -12,12 +12,12 @@ module Mutations
       field :errors, [String], null: true
 
       def resolve(id:)
-        event = ::Event.find(id)
+        schedule = ::Schedule.find(id)
 
-        if event.destroy
+        if schedule.destroy
           { success: true }
         else
-          { success: false, errors: event.errors.full_messages }
+          { success: false, errors: schedule.errors.full_messages }
         end
       end
     end

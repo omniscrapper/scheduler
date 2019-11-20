@@ -1,16 +1,16 @@
 require_relative '../base'
-require_relative '../../../models/event'
-require_relative '../../types/event'
+require_relative '../../../models/schedule'
+require_relative '../../types/schedule'
 
 module Resolvers
-  module Event
+  module Schedule
     class Show < Resolvers::Base
-      type Types::Event, null: false
+      type Types::Schedule, null: false
 
       argument :id, ID, required: true
 
       def resolve(id:)
-        ::Event[id]
+        ::Schedule[id]
       end
     end
   end

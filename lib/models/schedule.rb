@@ -1,4 +1,4 @@
-class Event < Sequel::Model
+class Schedule < Sequel::Model
   FREQUENCY_PERIODS = [:seconds, :days, :months, :years].freeze
 
   plugin :validation_helpers
@@ -14,4 +14,7 @@ class Event < Sequel::Model
     validates_presence [:name, :task_id, :frequency_period, :frequency_quantity]
   end
 
+  def attributes
+    values
+  end
 end
