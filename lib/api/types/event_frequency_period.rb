@@ -3,12 +3,12 @@ require_relative '../../models/event'
 
 module Types
   class EventFrequencyPeriod < Types::BaseEnum
-    periods = ::Event.frequency_periods.values
+    periods = ::Event::FREQUENCY_PERIODS
 
     description "Enum periods: #{periods}"
 
     periods.each do |period|
-      value period
+      value period.to_s, value: period
     end
   end
 end

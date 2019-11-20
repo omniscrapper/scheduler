@@ -1,14 +1,17 @@
-class Event < ActiveRecord::Base
-  validates :name, :task_id, :frequency_period, :frequency_quantity, presence: true
+class Event < Sequel::Model
+  FREQUENCY_PERIODS = [:seconds, :days, :months, :years].freeze
 
-  enum frequency_period: {
-    seconds: 'seconds',
-    days: 'days',
-    months: 'months',
-    years: 'years'
-  }
+  plugin :validation_helpers
+  plugin :enum
+  enum :frequency_period, FREQUENCY_PERIODS
 
   def frequency
     frequency_quantity.send(frequency_period.to_sym)
   end
+
+  def validate
+    super
+    validates_presence [:name, :task_id, :frequency_period, :frequency_quantity]
+  end
+
 end

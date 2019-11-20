@@ -1,5 +1,5 @@
-require './app'
+require './app/api'
 
 map '/api' do
-  run App
+  run Api
 end

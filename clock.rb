@@ -1,7 +1,6 @@
 require 'clockwork'
 require 'clockwork/database_events'
 require 'active_support/time'
-require 'active_record'
 require 'sidekiq'
 require './lib/schedule/resolver'
 require './lib/workers/scrapping'

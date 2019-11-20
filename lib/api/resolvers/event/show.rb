@@ -10,7 +10,7 @@ module Resolvers
       argument :id, ID, required: true
 
       def resolve(id:)
-        ::Event.find(id)
+        ::Event[id]
       end
     end
   end

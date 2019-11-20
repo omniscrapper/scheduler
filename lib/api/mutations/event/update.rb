@@ -15,7 +15,7 @@ module Mutations
       field :errors, [String], null: true
 
       def resolve(id:, attributes:)
-        event = ::Event.find(id)
+        event = ::Event[id]
 
         if event.update(attributes.to_h)
           { event: event }
